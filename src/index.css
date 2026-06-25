@@ -8,6 +8,9 @@
   --primary: #d58830;
   --secondary: #5e3b22;
   --accent: #8c3b3b;
+  --cream: #FFF5E4;
+  --amber: #D4882F;
+  --espresso: #2C1A0E;
 }
 
 * {
@@ -27,9 +30,11 @@ html {
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: var(--background);
+  background-color: var(--cream);
   color: var(--text);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @keyframes testimonialScroll {
@@ -45,8 +50,34 @@ body {
   animation: testimonialScroll 40s linear infinite;
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(3deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-2deg);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -55,9 +86,37 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: #D4882F;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #B8701A;
+}
+
+/* Grain overlay for dark sections */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Arch shape clip-path */
+.arch-clip {
+  clip-path: ellipse(140% 100% at 50% 100%);
+}
+
+.arch-clip-top {
+  clip-path: ellipse(140% 100% at 50% 0%);
+}
+
+/* Custom selection colors */
+::selection {
+  background: rgba(212, 136, 47, 0.3);
+  color: #2C1A0E;
 }

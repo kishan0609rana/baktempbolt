@@ -9,62 +9,106 @@ const menuItems = [
     price: '$68',
     image: '/images/brown-butter-cake.jpg',
     tag: 'Signature',
+    span: 2,
   },
   {
     id: 2,
-    name: 'Golden Croissant',
-    description: 'Flaky, buttery layers with a caramelized exterior',
-    price: '$4.50',
-    image: '/media/croissant.jpeg',
-    tag: 'Fresh Daily',
-  },
-  {
-    id: 3,
     name: 'Chocolate Chunk Walnut',
-    description: 'Dark chocolate, caramelized walnuts, sea salt',
+    description: 'Dark chocolate, caramelized walnuts, Maldon sea salt',
     price: '$5.50',
     image: '/images/chocolate-chunk-cookie.jpg',
     tag: 'Bestseller',
+    span: 1,
+  },
+  {
+    id: 3,
+    name: 'Salted Caramel Pecan',
+    description: 'Salted caramel, toasted pecans, Madagascar vanilla',
+    price: '$5.50',
+    image: '/images/salted-caramel-cookie.jpg',
+    tag: null,
+    span: 1,
   },
   {
     id: 4,
-    name: 'Dark Chocolate Tart',
-    description: 'Rich ganache, shortbread crust, cocoa nibs',
-    price: '$8.50',
-    image: '/media/Dark_chocolate_tart_slice_202606241752.jpeg',
-    tag: null,
-  },
-  {
-    id: 5,
     name: 'Black Forest Gateau',
-    description: 'Kirsch-soaked cherries, whipped cream, dark chocolate shavings',
+    description: 'Kirsch-soaked cherries, whipped cream, Valrhona chocolate',
     price: '$75',
     image: '/images/black-forest-cake.jpg',
     tag: 'Seasonal',
+    span: 1,
+  },
+  {
+    id: 5,
+    name: 'Double Dark Chocolate',
+    description: 'Cocoa nibs, 70% dark chocolate, espresso finish',
+    price: '$5.50',
+    image: '/images/double-chocolate-cookie.jpg',
+    tag: 'Gluten-Free',
+    span: 1,
   },
   {
     id: 6,
-    name: 'Cinnamon Roll',
-    description: 'Warm glaze, soft dough, aromatic spice',
-    price: '$5.00',
-    image: '/media/Warm_glazed_cinnamon_roll_202606241752.jpeg',
-    tag: null,
+    name: 'Golden Croissant',
+    description: 'French butter, 64 layers, caramelized exterior',
+    price: '$4.50',
+    image: '/media/croissant.jpeg',
+    tag: 'Fresh Daily',
+    span: 1,
   },
   {
     id: 7,
     name: 'Hazelnut Ganache',
-    description: 'Hazelnut praline, dark chocolate ganache, fleur de sel',
+    description: 'Piedmont hazelnuts, dark chocolate ganache, fleur de sel',
     price: '$6.00',
     image: '/images/hazelnut-cookie.jpg',
     tag: null,
+    span: 1,
   },
   {
     id: 8,
+    name: 'Milk Chocolate Caramel',
+    description: 'Salted caramel core, milk chocolate, vanilla cookie',
+    price: '$5.50',
+    image: '/images/milk-chocolate-caramel-cookie-1.jpg',
+    tag: 'New',
+    span: 1,
+  },
+  {
+    id: 9,
+    name: 'Peanut Butter Jam',
+    description: 'Roasted peanuts, strawberry jam center, brown sugar',
+    price: '$5.50',
+    image: '/images/peanut-butter-jam-cookie-1.jpg',
+    tag: null,
+    span: 1,
+  },
+  {
+    id: 10,
+    name: 'S\'Mores Supreme',
+    description: 'Toasted marshmallow, graham cracker, milk chocolate',
+    price: '$6.00',
+    image: '/images/smores-cookie-1.jpg',
+    tag: 'Limited',
+    span: 1,
+  },
+  {
+    id: 11,
+    name: 'Black & White Chocolate',
+    description: 'White and dark chocolate chunks, vanilla cream base',
+    price: '$5.50',
+    image: '/images/black-and-white-chocolate-cookie-1.jpg',
+    tag: null,
+    span: 1,
+  },
+  {
+    id: 12,
     name: 'Birthday Celebration',
     description: 'Rainbow sprinkles, vanilla bean, cream cheese frosting',
     price: '$6.00',
     image: '/images/birthday-cookie.jpg',
-    tag: 'Limited',
+    tag: 'Popular',
+    span: 1,
   },
 ]
 
@@ -73,103 +117,120 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08,
+      staggerChildren: 0.06,
       delayChildren: 0.15,
     },
   },
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  hidden: { opacity: 0, y: 25 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 }
 
 export default function Menu() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-40px' })
 
-  const getColSpan = (index: number): string => {
-    if (index === 0 || index === 4) return 'md:col-span-2'
-    return 'md:col-span-1'
-  }
-
   return (
     <section
       ref={sectionRef}
       id="menu"
-      className="py-24 md:py-32 bg-espresso-light px-6"
+      className="py-28 md:py-36 bg-espresso-light relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto">
+      {/* Background subtle pattern */}
+      <div
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)`,
+          backgroundSize: '48px 48px',
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="text-center mb-16"
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="text-center mb-20"
         >
-          <span className="text-amber text-sm font-sans tracking-widest uppercase">
+          <span className="text-amber text-sm font-sans tracking-[0.25em] uppercase">
             Our Creations
           </span>
-          <h2 className="font-serif text-4xl md:text-5xl text-cream mt-4">
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-cream mt-6 leading-tight">
             Curated with Intention
           </h2>
+          <p className="text-cream/60 font-sans text-lg mt-6 max-w-2xl mx-auto">
+            Each piece is handcrafted using time-honored techniques and the finest ingredients.
+          </p>
         </motion.div>
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid md:grid-cols-4 gap-6"
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6"
         >
-          {menuItems.map((item, index) => (
+          {menuItems.map((item) => (
             <motion.div
               key={item.id}
               variants={itemVariants}
-              whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeInOut' } }}
-              className={`group relative overflow-hidden rounded-xl bg-espresso ${getColSpan(index)}`}
+              whileHover={{ y: -10, transition: { duration: 0.3, ease: 'easeInOut' } }}
+              className={`group relative overflow-hidden rounded-2xl bg-espresso ${
+                item.span === 2 ? 'sm:col-span-2' : ''
+              }`}
             >
-              <div className={`relative ${index === 0 || index === 4 ? 'aspect-[2/1]' : 'aspect-square'}`}>
+              <div className={`relative ${item.span === 2 ? 'aspect-[2/1]' : 'aspect-square'}`}>
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/50 to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/40 to-transparent opacity-90" />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
+
+              {/* Content */}
+              <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1">
                     {item.tag && (
-                      <span className="inline-block px-2 py-1 bg-amber/20 text-amber text-xs font-sans tracking-wider uppercase rounded mb-2">
+                      <span className="inline-block px-2.5 py-1 bg-amber/20 backdrop-blur-sm text-amber text-[11px] font-sans tracking-wider uppercase rounded-full mb-2">
                         {item.tag}
                       </span>
                     )}
-                    <h3 className="font-serif text-xl md:text-2xl text-cream mb-1">
+                    <h3 className="font-serif text-lg md:text-xl lg:text-2xl text-cream mb-1">
                       {item.name}
                     </h3>
-                    <p className="text-cream/60 font-sans text-sm">
+                    <p className="text-cream/55 font-sans text-sm leading-relaxed line-clamp-2">
                       {item.description}
                     </p>
                   </div>
-                  <span className="font-serif text-xl text-amber shrink-0">
+                  <span className="font-serif text-xl md:text-2xl text-amber shrink-0 mt-1">
                     {item.price}
                   </span>
                 </div>
               </div>
+
+              {/* Hover overlay */}
+              <div className="absolute inset-0 bg-amber/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
           ))}
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5, ease: 'easeOut' }}
-          className="text-center mt-12"
+          transition={{ duration: 0.7, delay: 0.6, ease: 'easeOut' }}
+          className="text-center mt-16"
         >
           <a
             href="#contact"
-            className="inline-block bg-amber text-espresso-dark px-8 py-4 rounded-full font-sans text-base font-medium hover:bg-amber-light transition-colors duration-300"
+            className="inline-flex items-center gap-3 bg-amber text-espresso-dark px-10 py-4 rounded-full font-sans text-base font-medium hover:bg-amber-light hover:shadow-lg hover:shadow-amber/20 transition-all duration-300"
           >
             View Full Menu
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </a>
         </motion.div>
       </div>

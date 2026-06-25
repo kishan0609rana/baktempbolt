@@ -1,0 +1,89 @@
+
+
+### ━━━ 1. COLOR SYSTEM ━━━
+
+The provided screenshots draw from a few distinct palettes, but the overarching theme relies on warm neutrals contrasted with stark darks and bold accent pops.
+
+* **Cream / Off-White (`#F9F8F2`)**
+* *Role:* Main background. Gives the site a warm, organic, "flour-dusted" feel without the harshness of pure white.
+
+
+* **Charcoal Black (`#1A1A1A`)**
+* *Role:* Primary text, navigation, and primary logo. Provides stark, high-contrast legibility.
+
+
+* **Bubblegum Pink (`#FFA8F3`)**
+* *Role:* Primary accent. Used for the prominent "INDULGE" circle, "Add to Cart" buttons, and UI elements (+/- toggles). Adds a playful, modern pop.
+
+
+* **Deep Teal (`#177A8C`)**
+* *Role:* Secondary accent / Border. Used for subheadings ("SHOULD BOTH COMFORT...") and the arched borders around the product cards.
+
+
+* **Muted Yellow / Butter (`#FDF2A6`) & Rust (`#C24D2C`)** *(From the secondary references)*
+* *Role:* Section backgrounds and thematic text. Creates an earthy, artisanal vibe.
+
+
+
+### ━━━ 2. TYPOGRAPHY ANALYSIS ━━━
+
+* **Heading Font:** Ultra-bold, geometric sans-serif (similar to *Monument Extended*, *Clash Display*, or *Integral CF*). Highly oversized (Hero text looks to be 12vw+), with very tight letter-spacing and tight line-height to make the text act as a solid visual block.
+* **Secondary Heading/Script:** A mix of clean serif and elegant, loose script (seen in the "Martin Auer" reference) to add an artisanal, handcrafted touch.
+* **Body Font:** Clean, modern sans-serif (like *Inter* or *Helvetica Neue*), regular weight. Likely around `16px` to `18px` with a generous line-height (`1.5` or `1.6`) for easy reading.
+* **Special Text Treatments:**
+* **Curved/Path Typography:** "CELEBRATE WITH CAKE" elegantly wrapped around an arched image.
+* **Floating Badge:** The "INDULGE" circle acts as a typographic sticker overlapping the content.
+* **Mixed Formatting:** Using different fonts within the same sentence block (e.g., mixing a standard serif with a flowing script for emphasis).
+
+
+
+### ━━━ 3. ANIMATION CATALOGUE (Inferred & Best Practices) ━━━
+
+Based on these layout styles, here are the standard animations expected for this tier of web design:
+
+* **Page Load Effects:** The oversized hero text ("A BAKING LOVE AFFAIR") likely fades in while sliding up from a mask. The scattered cake imagery loads with a slight parallax depth effect.
+* **Scroll-Triggered Reveals:** The arch-shaped images scale up slightly (zoom-in effect inside the mask) as they enter the viewport. The curved "CELEBRATE WITH CAKE" text slowly rotates as the user scrolls down the page.
+* **Hover Effects:**
+* The pink "INDULGE" badge scales up by 5% and rotates slightly.
+* Product cards (cookies) feature an image swap on hover (e.g., showing the cookie broken open) or a subtle drop shadow to lift the card.
+* Buttons invert colors on hover (pink background to charcoal background).
+
+
+* **Background Animations:** A subtle parallax scroll effect where the background scattered cakes move at a different speed than the foreground text.
+
+### ━━━ 4. LAYOUT PATTERNS ━━━
+
+* **Grid Structure:** The site breaks the traditional rigid grid. It utilizes overlapping layers—text sits directly on top of scattered, cutout background images in the hero section.
+* **Product Sections:** A clean 3-column grid is used for the shop/product area, but it feels unique because the containers are massive arch-shapes rather than standard rectangles.
+* **Section Spacing:** Generous and airy. There is significant padding (at least `120px` to `150px` top and bottom) between sections, allowing the oversized typography and rich photography to breathe.
+* **Non-Standard Layouts:** Arched clipping masks are laid out horizontally. The hero section acts as a "collage" rather than a standard structured banner.
+
+### ━━━ 5. TOP 5 STANDOUT TECHNIQUES ━━━
+
+1. **Architectural Image Masking:** Using archways and pill shapes to frame photography instantly elevates the design from a standard template to a custom, boutique feel.
+2. **Oversized, Structural Typography:** Using text so large that it becomes the primary architectural element of the page, rather than just information.
+3. **Collage/Scattered Hero Design:** Dropping high-resolution, deep-etched product cutouts behind the main text creates a rich, tactile, and appetizing introduction.
+4. **Typographic Wrapping:** Curving text around the top of an arched image creates a beautiful editorial/magazine quality.
+5. **Playful Micro-Doodles:** Integrating tiny, hand-drawn vector elements (like the little cake slice or cookie sketch) alongside high-end photography adds a localized, human touch.
+
+### ━━━ 6. BAKERY FIT ANALYSIS ━━━
+
+**What translates WELL to a "Luxury Artisan" bakery:**
+
+* **The Warm Cream Background:** Perfection. It feels like dough, flour, and organic ingredients.
+* **Arched Clipping Masks:** Highly recommended. Arches evoke classic architecture, traditional brick ovens, and elegance.
+* **Curved Typography & Mixed Fonts:** Screams "bespoke" and "editorial."
+* **High-Quality Cutout Photography:** Letting the texture of the bread/pastries sit directly on the background without a square photo border looks incredibly premium.
+
+**What does NOT fit a purely "Luxury" bakery:**
+
+* **The Bubblegum Pink & Teal Palette:** While great for a trendy, Gen-Z cookie pop-up (like Bernice), neon or heavily saturated pastels can cheapen a "luxury artisan" brand. *Adjustment:* Swap the neon pink for a rich burgundy, deep olive green, or elegant bronze/gold.
+* **The Scattered/Messy Hero:** The chaotic cake collage is fun but lacks the curated, minimalist refinement expected of luxury. *Adjustment:* Keep the cutout imagery, but place 1 or 2 perfect, high-resolution pastries cleanly offset next to the text instead of scattering 15 of them.
+
+---
+
+### ━━━ 7. BOLT.NEW PROMPT FRAGMENT ━━━
+
+*Copy and paste this directly into your Bolt.new prompt:*
+
+"Design influenced by modern boutique bakeries: implement an off-white/cream background (#FAF9F6) to provide a warm, organic base. Use an ultra-bold, oversized sans-serif font for primary headings, and incorporate curved text wrapping around arch-shaped image masks for an editorial look. Display product galleries in a 3-column grid using pill or arch-shaped cards with thin, elegant borders. Incorporate high-end, cutout food photography overlapping the text in the hero section to create a tactile collage effect, but keep the overall layout spacious with generous padding."

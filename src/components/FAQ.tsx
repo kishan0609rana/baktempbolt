@@ -42,43 +42,51 @@ export default function FAQ() {
     <section
       ref={sectionRef}
       id="faq"
-      className="py-24 md:py-32 bg-espresso-light px-6"
+      className="py-28 md:py-36 bg-espresso-light relative overflow-hidden"
     >
-      <div className="max-w-2xl mx-auto">
+      {/* Background decorative element */}
+      <div className="absolute -right-40 -top-40 w-96 h-96 opacity-5">
+        <img src="/svgs/stacked-waves-haikei.svg" alt="" className="w-full h-full" />
+      </div>
+
+      <div className="max-w-3xl mx-auto px-6 md:px-12 relative">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
           className="text-center mb-16"
         >
-          <span className="text-amber text-sm font-sans tracking-widest uppercase">
+          <span className="text-amber text-sm font-sans tracking-[0.25em] uppercase">
             Questions
           </span>
-          <h2 className="font-serif text-4xl md:text-5xl text-cream mt-4">
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-cream mt-6 leading-tight">
             Common Queries
           </h2>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+          transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
           className="space-y-4"
         >
-          {faqs.map((faq) => (
-            <div
+          {faqs.map((faq, index) => (
+            <motion.div
               key={faq.id}
-              className="bg-espresso rounded-xl overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.1 + index * 0.1, ease: 'easeOut' }}
+              className={`bg-espresso rounded-2xl overflow-hidden ${openId === faq.id ? 'ring-1 ring-amber/30' : ''}`}
             >
               <button
                 onClick={() => toggleFaq(faq.id)}
-                className="w-full flex items-center justify-between p-6 text-left"
+                className="w-full flex items-center justify-between p-6 md:p-7 text-left group"
               >
-                <span className="font-serif text-lg text-cream pr-4">
+                <span className="font-serif text-lg md:text-xl text-cream pr-4 group-hover:text-amber transition-colors duration-300">
                   {faq.question}
                 </span>
                 <motion.span
-                  className="text-amber text-2xl shrink-0"
+                  className="text-amber text-3xl shrink-0 font-light"
                   animate={{ rotate: openId === faq.id ? 45 : 0 }}
                   transition={{ duration: 0.3, ease: 'easeInOut' }}
                 >
@@ -92,17 +100,17 @@ export default function FAQ() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    transition={{ duration: 0.4, ease: 'easeInOut' }}
                   >
-                    <div className="px-6 pb-6">
-                      <p className="text-cream/70 font-sans leading-relaxed">
+                    <div className="px-6 md:px-7 pb-6 md:pb-7 pt-0">
+                      <p className="text-cream/70 font-sans leading-relaxed text-base">
                         {faq.answer}
                       </p>
                     </div>
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
