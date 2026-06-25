@@ -12,6 +12,14 @@ const menuItems = [
   },
   {
     id: 2,
+    name: 'Golden Croissant',
+    description: 'Flaky, buttery layers with a caramelized exterior',
+    price: '$4.50',
+    image: '/media/croissant.jpeg',
+    tag: 'Fresh Daily',
+  },
+  {
+    id: 3,
     name: 'Chocolate Chunk Walnut',
     description: 'Dark chocolate, caramelized walnuts, sea salt',
     price: '$5.50',
@@ -19,20 +27,12 @@ const menuItems = [
     tag: 'Bestseller',
   },
   {
-    id: 3,
-    name: 'Salted Caramel Pecan',
-    description: 'Salted caramel, toasted pecans, vanilla bean',
-    price: '$5.50',
-    image: '/images/salted-caramel-cookie.jpg',
-    tag: null,
-  },
-  {
     id: 4,
-    name: 'Double Dark Chocolate',
-    description: 'Cocoa nibs, 70% dark chocolate, espresso',
-    price: '$5.50',
-    image: '/images/double-chocolate-cookie.jpg',
-    tag: 'Gluten-Free',
+    name: 'Dark Chocolate Tart',
+    description: 'Rich ganache, shortbread crust, cocoa nibs',
+    price: '$8.50',
+    image: '/media/Dark_chocolate_tart_slice_202606241752.jpeg',
+    tag: null,
   },
   {
     id: 5,
@@ -44,6 +44,14 @@ const menuItems = [
   },
   {
     id: 6,
+    name: 'Cinnamon Roll',
+    description: 'Warm glaze, soft dough, aromatic spice',
+    price: '$5.00',
+    image: '/media/Warm_glazed_cinnamon_roll_202606241752.jpeg',
+    tag: null,
+  },
+  {
+    id: 7,
     name: 'Hazelnut Ganache',
     description: 'Hazelnut praline, dark chocolate ganache, fleur de sel',
     price: '$6.00',
@@ -51,7 +59,7 @@ const menuItems = [
     tag: null,
   },
   {
-    id: 7,
+    id: 8,
     name: 'Birthday Celebration',
     description: 'Rainbow sprinkles, vanilla bean, cream cheese frosting',
     price: '$6.00',
@@ -65,8 +73,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
+      staggerChildren: 0.08,
+      delayChildren: 0.15,
     },
   },
 }

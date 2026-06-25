@@ -1,9 +1,18 @@
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 
 export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-40px' })
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (videoRef.current && isInView) {
+      videoRef.current.play().catch(() => {
+        // Autoplay might be blocked
+      })
+    }
+  }, [isInView])
 
   return (
     <section
@@ -41,18 +50,20 @@ export default function About() {
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
           className="relative"
         >
-          <div className="aspect-square bg-gradient-to-br from-amber/20 via-amber/10 to-transparent rounded-2xl relative overflow-hidden">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `radial-gradient(circle at 2px 2px, rgba(212, 136, 47, 0.15) 1px, transparent 0)`,
-                backgroundSize: '24px 24px',
-              }}
-            />
-            <div className="absolute inset-8 flex items-center justify-center">
-              <div className="w-32 h-32 rounded-full bg-amber/30 flex items-center justify-center">
-                <span className="font-serif text-5xl text-amber">M</span>
-              </div>
+          <div className="aspect-square rounded-2xl overflow-hidden relative shadow-xl">
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src="/media/Hand_placing_cherry_on_cake_202606241752.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-t from-espresso/30 to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6">
+              <span className="font-serif text-2xl text-cream">Crafted with intention</span>
             </div>
           </div>
         </motion.div>

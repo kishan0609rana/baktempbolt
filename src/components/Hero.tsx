@@ -13,6 +13,7 @@ const particles = Array.from({ length: 10 }, (_, i) => ({
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const heroRef = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -29,12 +30,36 @@ export default function Hero() {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Autoplay might be blocked, that's okay
+      })
+    }
+  }, [])
+
   return (
     <section
       ref={heroRef}
       className="relative min-h-screen bg-espresso flex items-center justify-center overflow-hidden"
     >
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover opacity-30"
+        >
+          <source src="/media/Baker_hands_kneading_dough_202606241752.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-espresso/60" />
+      </div>
+
+      {/* Animated blobs */}
+      <div className="absolute inset-0 overflow-hidden z-[1]">
         <motion.div
           className="absolute w-[500px] h-[500px] rounded-full opacity-20"
           style={{
@@ -105,10 +130,11 @@ export default function Hero() {
         />
       </div>
 
+      {/* Floating particles */}
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute bg-amber/30 rounded-full"
+          className="absolute bg-amber/30 rounded-full z-[1]"
           style={{
             width: particle.size,
             height: particle.size,
@@ -182,7 +208,7 @@ export default function Hero() {
       </div>
 
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
       >
